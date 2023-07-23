@@ -3,7 +3,7 @@ FROM golang:latest AS builder
 WORKDIR /emitter
 COPY . .
 
-RUN apk add --no-cache git g++ \
+RUN apt install git \
     && go build -o emitter . \
     && chmod +x emitter
 
