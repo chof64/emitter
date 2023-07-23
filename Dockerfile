@@ -1,6 +1,6 @@
 FROM golang:latest AS builder
 
-WORKDIR /emitter
+WORKDIR /app
 COPY . .
 
 RUN apt install git \
@@ -11,9 +11,11 @@ RUN apt install git \
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 
-WORKDIR /emitter
+WORKDIR /app
 
-COPY --from=builder /emitter/emitter .
+COPY --from=builder /app/emitter .
+
+RUN chmod +x /app/emitter
 
 # Main port
 EXPOSE 8080
@@ -21,4 +23,4 @@ EXPOSE 8080
 EXPOSE 4000
 
 
-CMD ["./emitter"]
+CMD ["/app/emitter"]
