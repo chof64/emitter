@@ -1,4 +1,4 @@
-name: Release
+name: Latest Build
 on:
   push:
     branches:
@@ -8,8 +8,8 @@ env:
   GO111MODULE: "on"
 
 jobs:
-  multi:
-    name: Docker Image (arm64)
+  latest:
+    name: Docker Image (arm64/amd64)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

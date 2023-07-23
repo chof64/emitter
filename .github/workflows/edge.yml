@@ -1,4 +1,4 @@
-name: Release
+name: Edge Build
 on: [pull_request]
 env:
   PROJECT: "github.com/emitter-io/emitter"
